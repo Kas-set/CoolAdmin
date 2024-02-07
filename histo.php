@@ -1,9 +1,16 @@
 <?php 
-$nombreEtudiantsParNationalite = [
-    'togolaise' =>2,
-    'beninois' =>3,
-];
 
+include('../admin/config/connexion.php');
+$sql2 = "SELECT `nationalité`, COUNT(*) AS nombre_inscrits FROM `etudiant` GROUP BY nationalité";
+// Exécution de la requête
+$resultat2 = $conn->query($sql2);
+$data = [];
+while ($a = $resultat2->fetch_assoc()) {
+    $nationalite = $a["nationalité"];
+    $nombre_inscrits = $a["nombre_inscrits"];
+    // Ajouter les informations à la tableau
+    $data[$nationalite] = $nombre_inscrits;
+}
 
 $largeurImage = 800;
 $hauteurImage = 500;
@@ -23,15 +30,29 @@ ImageLine($im, 80, $hauteurImage - $espaceEnBas, $largeurImage - 10, $hauteurIma
 // Dessiner les barres pour chaque nationalité
 $positionX = 120;
 $fontSize = 12; // Taille de la police
-$fontPath = 'BALLW___.TTF'; // Remplacez par le chemin vers une police TrueType (TTF)
+$fontPath = './BALLW___.TTF'; // Remplacez par le chemin vers une police TrueType (TTF)
 
-foreach ($nombreEtudiantsParNationalite as $nationalite => $nombreEtudiants) {
-    $hauteurImageRectangle = round(($nombreEtudiants * ($hauteurImage - 40)) / max($nombreEtudiantsParNationalite));
-    ImageFilledRectangle($im, $positionX - 15, $hauteurImage - $hauteurImageRectangle, $positionX + 15, $hauteurImage - $espaceEnBas, $bleu);
-    imagettftext($im, $fontSize, 0, $positionX - 15, $hauteurImage - $espaceEnBas + 15, $noir, $fontPath, $nationalite);
-    imagettftext($im, $fontSize, 0, $positionX - 15, $hauteurImage - $hauteurImageRectangle - 25, $noir, $fontPath, $nombreEtudiants);
+// Trouver le nombre maximum d'inscrits pour ajuster l'échelle des barres
+$nombreMax = max($data);
 
-    $positionX += 55 + $espaceEntreBandes; // Augmenter la position X pour la prochaine nationalité avec espace entre bandes
+// Calculer la hauteur maximale des barres
+$hauteurMax = $hauteurImage - $espaceEnBas - 20; // Vous pouvez ajuster ce nombre selon vos besoins
+
+// Dessiner les barres pour chaque nationalité
+foreach ($data as $nationalite => $nombre) {
+    $hauteurBarre = ($nombre / $nombreMax) * $hauteurMax;
+    
+    // Dessiner une barre pour chaque nationalité
+    imagefilledrectangle($im, $positionX, $hauteurImage - $espaceEnBas - $hauteurBarre, $positionX + 40, $hauteurImage - $espaceEnBas, $bleu);
+
+    // Écrire le nombre d'inscrits au-dessus de la barre
+    imagettftext($im, $fontSize, 0, $positionX + 10, $hauteurImage - $espaceEnBas - $hauteurBarre - 5, $noir, $fontPath, $nombre);
+
+    // Écrire le nom de la nationalité sous la barre
+    imagettftext($im, $fontSize, 0, $positionX + 10, $hauteurImage + 15, $noir, $fontPath, $nationalite);
+
+    // Mettre à jour la position X pour la prochaine barre
+    $positionX += 60;
 }
 
 // Affichage de l'image

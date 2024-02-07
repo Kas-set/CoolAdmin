@@ -10,12 +10,12 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Calendar</title>
+    <title>Forms</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
@@ -30,28 +30,11 @@
     <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
-    <!-- FullCalendar -->
-    <link href='vendor/fullcalendar-3.10.0/fullcalendar.css' rel='stylesheet' media="all" />
-
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
 
-    <style type="text/css">
-    /* force class color to override the bootstrap base rule
-       NOTE: adding 'url: #' to calendar makes this unneeded
-     */
-    .fc-event, .fc-event:hover {
-          color: #fff !important;
-          text-decoration: none;
-    }
-    </style>
-
 </head>
 
-<!-- animsition overrides all click events on clickable things like a,
-      since calendar doesn't add href's be default,
-      it leads to odd behaviors like loading 'undefined'
-      moving the class to menus lead to only the menu having the effect -->
 <body class="animsition">
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
@@ -72,7 +55,7 @@
             </div>
             <nav class="navbar-mobile">
                 <div class="container-fluid">
-                    <ul class="list-unstyled navbar__list">
+                <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
                             <a class="js-arrow" href="index.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
@@ -95,6 +78,7 @@
                            
                         </li>
                     </ul>
+
                 </div>
             </nav>
         </header>
@@ -102,13 +86,13 @@
 
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
-            <div class="logo fw-bold">
+        <div class="logo fw-bold">
                 ESPACE ADMIN
-              
+        
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
-                    <ul class="list-unstyled navbar__list">
+                <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
                             <a class="js-arrow" href="index.php">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
@@ -131,6 +115,7 @@
                            
                         </li>
                     </ul>
+
                 </nav>
             </div>
         </aside>
@@ -150,8 +135,8 @@
                                 </button>
                             </form>
                             <div class="header-button">
-                                <div class="noti-wrap">
-                                    <div class="noti__item js-item-menu">
+                                <div class="noti-wrap ">
+                                    <div class="noti__item js-item-menu d-none">
                                         <i class="zmdi zmdi-comment-more"></i>
                                         <span class="quantity">1</span>
                                         <div class="mess-dropdown js-dropdown">
@@ -183,7 +168,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="noti__item js-item-menu">
+                                    <div class="noti__item js-item-menu d-none">
                                         <i class="zmdi zmdi-email"></i>
                                         <span class="quantity">1</span>
                                         <div class="email-dropdown js-dropdown">
@@ -281,13 +266,12 @@
                                                     <h5 class="name">
                                                         <a href="#">john doe</a>
                                                     </h5>
-                                                    <span class="email">godwin@gmail.com</span>
+                                                    <span class="email">Godwin@example.com</span>
                                                 </div>
-                                            </div>
-                                           
+                                            </div>                                        
                                             <div class="account-dropdown__footer">
                                                 <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Se Déconnecter</a>
+                                                    <i class="zmdi zmdi-power"></i>Se déconnecter</a>
                                             </div>
                                         </div>
                                     </div>
@@ -297,20 +281,129 @@
                     </div>
                 </div>
             </header>
-            <!-- END HEADER DESKTOP-->
+            <!-- HEADER DESKTOP-->
 
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col">
-                              <div class="au-card">
-                                <div id="calendar"></div>
-                              </div>
-                            </div><!-- .col -->
-                        </div>
-                       
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">Formulaire d'informations</div>
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h3 class="text-center title-2"></h3>
+                                        </div>
+                                        <hr>
+                                        <form action="" method="post" novalidate="novalidate">
+                                            <div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">Lieu 1 du concours</label>
+                                                <input id="cc-pament" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="">
+                                            </div>
+                                            <div class="form-group has-success">
+                                                <label for="cc-name" class="control-label mb-1">Lien de localisation du lieu 1</label>
+                                                <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
+                                                    autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
+                                                <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cc-number" class="control-label mb-1"> Lieu 2 du concours</label>
+                                                <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
+                                                    data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number"
+                                                    autocomplete="cc-number">
+                                                <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cc-number" class="control-label mb-1">Lien de localisation du Lieu 2</label>
+                                                <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
+                                                    data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number"
+                                                    autocomplete="cc-number">
+                                                <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="cc-exp" class="control-label mb-1">DATE D'OUVERTURE</label>
+                                                        <input id="cc-exp" name="cc-exp" type="date" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration"
+                                                            data-val-cc-exp="Please enter a valid month and year" placeholder="MM / YY"
+                                                            autocomplete="cc-exp">
+                                                        <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="cc-exp" class="control-label mb-1">DATE LIMITE</label>
+                                                        <input id="cc-exp" name="cc-exp" type="date" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration"
+                                                            data-val-cc-exp="Please enter a valid month and year" placeholder="MM / YY"
+                                                            autocomplete="cc-exp">
+                                                        <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cc-number" class="control-label mb-1">DATE DE COMPOSITION</label>
+                                                <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true"
+                                                    data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number"
+                                                    autocomplete="cc-number">
+                                                <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                                            </div>
+                                            <div>
+                                                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                                    <!-- <i class="fa fa-lock fa-lg"></i>&nbsp; -->
+                                                    <span id="payment-button-amount">VALIDER</span>
+                                                    <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Formulaire des Matieres</strong>
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <form action="" method="post" class="form-horizontal">
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="hf-email" class=" form-control-label">Matiere</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="email" id="hf-email" name="hf-email" placeholder="Entrer la matiere" class="form-control">
+                                                    <!-- <span class="help-block">entrer le coefficient</span> -->
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="hf-password" class=" form-control-label">Coefficient</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="password" id="hf-password" name="hf-password" placeholder="Enter le coefficient" class="form-control">
+                                                    <!-- <span class="help-block">Please enter your password</span> -->
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="hf-password" class=" form-control-label">Durée</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="password" id="hf-password" name="hf-password" placeholder="Entrer la durée de la metière" class="form-control">
+                                                    <!-- <span class="help-block">Please enter your password</span> -->
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                        <button type="reset" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-ban"></i> Reset
+                                        </button>
+                                    </div>
+                                </div>
                     </div>
                 </div>
             </div>
@@ -336,56 +429,11 @@
     <script src="vendor/circle-progress/circle-progress.min.js"></script>
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js"></script>
-
-    <!-- full calendar requires moment along jquery which is included above -->
-    <script src="vendor/fullcalendar-3.10.0/lib/moment.min.js"></script>
-    <script src="vendor/fullcalendar-3.10.0/fullcalendar.js"></script>
+    <script src="vendor/select2/select2.min.js">
+    </script>
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
-
-    <script type="text/javascript">
-$(function() {
-  // for now, there is something adding a click handler to 'a'
-  var tues = moment().day(2).hour(19);
-
-  // build trival night events for example data
-  var events = [
-    {
-      title: "Special Conference",
-      start: moment().format('YYYY-MM-DD'),
-      url: '#'
-    },
- 
-
-  ];
-
-  var trivia_nights = []
-
-  for(var i = 1; i <= 4; i++) {
-    var n = tues.clone().add(i, 'weeks');
-    console.log("isoString: " + n.toISOString());
-    trivia_nights.push({
-      title: '',
-      start: n.toISOString(),
-      allDay: false,
-      url: '#'
-    });
-  }
-
-  // setup a few events
-  $('#calendar').fullCalendar({
-    header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'month,agendaWeek,agendaDay,listWeek'
-    },
-    events: events.concat(trivia_nights)
-  });
-});
-    </script>
-
 
 </body>
 
